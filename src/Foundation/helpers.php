@@ -2,10 +2,9 @@
 
 use Jybtx\JwtAuth\JwtAuthToken;
 
-if ( !function_exists( 'jybtx' ) ) {
-	function jybtx( $attributes = NULL )
+if ( !function_exists( 'tokenAuth' ) ) {
+	function tokenAuth( $attributes = NULL )
 	{
-		return '5555';
-		// return JwtAuthToken::getAuthUserInfomation($attributes);		
+		return JwtAuthToken::getAuthUserInfomation($attributes);		
 	}
 }
