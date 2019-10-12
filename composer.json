@@ -1,0 +1,36 @@
+{
+    "name": "jybtx/token-auth",
+    "description": "A simple JSON Web Token validation",
+    "type": "library",
+    "license": "MIT",
+    "keywords": ["jwt","auth","token"],
+    "authors": [
+        {
+            "name": "jybtx",
+            "email": "2574034626@qq.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=7.0.0",
+        "lcobucci/jwt": "^3.3"
+    },
+    "autoload": {        
+        "psr-4": {
+            "Jybtx\\JwtAuth\\": "src/"
+        },
+        "files": [
+            "src/Foundation/helpers.php"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Jybtx\\JwtAuth\\Provider\\JwtAuthServiceProvider"
+            ],
+            "aliases": {
+                "JwtAuth": "Jybtx\\JwtAuth\\Facades\\JWTAuthFaced"
+            }
+        }
+    }
+}
