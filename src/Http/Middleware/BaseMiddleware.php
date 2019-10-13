@@ -2,8 +2,10 @@
 
 namespace Jybtx\JwtAuth\Http\Middleware;
 
+use JwtAuth;
 use Illuminate\Http\Request;
 use Jybtx\JwtAuth\TokenValidator;
+
 abstract class BaseMiddleware
 {
 	use TokenValidator;
@@ -24,7 +26,7 @@ abstract class BaseMiddleware
      */
     protected function setAuthenticationHeader($response, $token = null)
     {
-        $token = $token ?: $this->auth->refresh();
+        $token = $token ?: JwtAuth::getRefreshToken();
         $response->headers->set('Authorization', 'Bearer '.$token);
 
         return $response;
