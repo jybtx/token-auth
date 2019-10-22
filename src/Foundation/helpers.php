@@ -20,7 +20,6 @@ if ( !function_exists('gettl') ) {
 if ( !function_exists('getoken') ) {
 	function getoken()
 	{
-		$token = request()->header('Authorization');
-        return trim( str_replace('Bearer','',$token) );
+        return trim( str_replace('Bearer','',request()->header('Authorization')) );
 	}
 }

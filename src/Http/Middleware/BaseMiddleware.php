@@ -2,9 +2,10 @@
 
 namespace Jybtx\TokenAuth\Http\Middleware;
 
-use TokenAuth;
 use Illuminate\Http\Request;
-use Jybtx\TokenAuth\TokenValidator;
+use Jybtx\TokenAuth\JwtAuthToken;
+use Jybtx\TokenAuth\Support\TokenValidator;
+use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 
 abstract class BaseMiddleware
 {
@@ -12,8 +13,8 @@ abstract class BaseMiddleware
 
 	public function checkForToken(Request $request)
 	{
-		if ( !$this->getVerifyToken( $request->header('Authorization') ) ) {
-			throw new UnauthorizedHttpException('jwt-auth', 'Token not provided');
+		if ( !$this->getVerifyToken( getoken() ) ) {
+			throw new UnauthorizedHttpException('token-auth', 'Token not provided');
 		}
 	}
 	/**
@@ -26,7 +27,7 @@ abstract class BaseMiddleware
      */
     protected function setAuthenticationHeader($response, $token = null)
     {
-        $token = $token ?: JwtAuth::getRefreshToken();
+        $token = $token ?: JwtAuthToken::getRefreshToken();
         $response->headers->set('Authorization', 'Bearer '.$token);
 
         return $response;

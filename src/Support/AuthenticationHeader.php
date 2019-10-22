@@ -2,7 +2,6 @@
 
 namespace Jybtx\TokenAuth\Support;
 
-
 trait AuthenticationHeader
 {
 
