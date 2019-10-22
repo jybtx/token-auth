@@ -20,9 +20,10 @@ trait CreateToken
 		$builder   = new Builder();
 		$signer    = new Sha512();
 		$curr_time = time();
-		$token_id  = md5(uniqid('JWT').$curr_time);		
-		$exp       = bcadd($curr_time, config('jwt-auth.ttl'));
-		$ref_exp   = bcadd($curr_time, config('jwt-auth.refresh_ttl'));
+		$token_id  = md5(uniqid('JWT').$curr_time);	
+
+		$exp       = bcadd($curr_time, bcmul( 60, config('token-auth.ttl') ) );
+		$ref_exp   = bcadd($curr_time, bcmul(60, config('token-auth.refresh_ttl') ) );
         // 官方字段可选用
         $builder->setIssuer('admin');// 设置iss发行人
         $builder->setAudience('user');// 设置aud接收人
@@ -36,7 +37,7 @@ trait CreateToken
         if ( !empty($data) ) {
             $builder->set('data', $data);
         }
-        $builder->sign($signer, str_replace('base64:','',config('jwt-auth.secret')) );// 对上面的信息使用sha256算法签名
+        $builder->sign($signer, str_replace('base64:','',config('token-auth.secret')) );// 对上面的信息使用sha256算法签名
         $token = $builder->getToken();// 获取生成的token
         $token = (string) $token;
         return $token;

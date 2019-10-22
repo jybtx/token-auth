@@ -5,6 +5,7 @@ use Jybtx\TokenAuth\Support\CreateToken;
 use Jybtx\TokenAuth\Support\TokenValidator;
 use Jybtx\TokenAuth\Support\TokenBlackList;
 use Jybtx\TokenAuth\Support\AuthenticationHeader;
+use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 
 class JwtAuthToken
 {
@@ -87,6 +88,7 @@ class JwtAuthToken
             	throw new UnauthorizedHttpException('token-auth', 'Token has expired');
             }
             $user_data = $this->getPayload($token, true);// 获取原token中的数据
+            self::TokenAddBlacklist($token);
             return $this->getCreateToken($user_data);// 重新生成token
 		}
 		throw new UnauthorizedHttpException('token-auth', 'Token not provided');

@@ -2,8 +2,10 @@
 
 namespace Jybtx\TokenAuth\Support;
 
+
 trait AuthenticationHeader
 {
+
 	/**
 	 * 验证token是否在刷新有效期内
 	 * @author jybtx
@@ -13,11 +15,12 @@ trait AuthenticationHeader
 	 */
 	public static function verifyRefresh($token)
     {
+
         // 验证签名是否合法
-        $legal = $this->verifySign($token);
+        $legal = TokenValidator::verifySign($token);        
         if ( !$legal ) return false;
 
-        $payload = $this->getPayload($token);
+        $payload = TokenValidator::getPayload($token);
         if ( !$payload ) return false;
 
         // 签发时间大于当前服务器时间验证失败
@@ -41,7 +44,7 @@ trait AuthenticationHeader
      */
 	public static function setAuthenticationHeader($response, $token = null)
 	{
-		$token = $token ?: $this->verifyRefresh($token);
+		$token = $token ?: self::verifyRefresh($token);
         $response->headers->set('Authorization', 'Bearer '.$token);
 
         return $response;

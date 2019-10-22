@@ -19,12 +19,12 @@ trait TokenValidator
         // 验证签名是否合法
         $legal = self::verifySign($token);
 
-        if ( !$legal ) return false;
+        if ( $legal != TRUE ) return false;
 
         $payload = self::getPayload($token);
 
         if ( !$payload ) return false;
-
+        
         // 签发时间大于当前服务器时间验证失败
         if (isset($payload['iat']) && $payload['iat'] > time()) return false;
 
@@ -41,12 +41,12 @@ trait TokenValidator
      * @param string $token
      * @return bool
      */
-    private static function verifySign($token)
+    public static function verifySign($token)
     {
         $signer = new Sha512();
         $parse  = new Parser();
         $parse  = $parse->parse($token);
-        $result = $parse->verify($signer, str_replace('base64:','',config('jwt-auth.secret')) );// 验证成功返回true 失败false
+        $result = $parse->verify($signer, str_replace('base64:','',config('token-auth.secret')) );// 验证成功返回true 失败false
         return $result;
     }
     /**
