@@ -4,6 +4,7 @@ namespace Jybtx\TokenAuth\Http\Middleware;
 
 use Illuminate\Http\Request;
 use Jybtx\TokenAuth\JwtAuthToken;
+use Illuminate\Support\Facades\Cache;
 use Jybtx\TokenAuth\Support\TokenValidator;
 use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 
@@ -31,5 +32,17 @@ abstract class BaseMiddleware
         $response->headers->set('Authorization', 'Bearer '.$token);
 
         return $response;
+    }
+
+    /**
+     * Check whether token is in blacklist
+     * 
+     */
+    public function checkTokenIsInBlacklist()
+    {
+        if ( Cache::has( getoken() ) )
+        {
+            throw new UnauthorizedHttpException('token-auth', 'Token expired');
+        }
     }
 }
