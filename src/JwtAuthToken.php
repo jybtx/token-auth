@@ -1,10 +1,10 @@
 <?php
-namespace Jybtx\JwtAuth;
+namespace Jybtx\TokenAuth;
 
-use Jybtx\JwtAuth\Support\CreateToken;
-use Jybtx\JwtAuth\Support\TokenValidator;
-use Jybtx\JwtAuth\Support\TokenBlackList;
-use Jybtx\JwtAuth\Support\AuthenticationHeader;
+use Jybtx\TokenAuth\Support\CreateToken;
+use Jybtx\TokenAuth\Support\TokenValidator;
+use Jybtx\TokenAuth\Support\TokenBlackList;
+use Jybtx\TokenAuth\Support\AuthenticationHeader;
 
 class JwtAuthToken
 {

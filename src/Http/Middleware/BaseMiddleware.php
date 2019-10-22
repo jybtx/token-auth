@@ -1,10 +1,10 @@
 <?php
 
-namespace Jybtx\JwtAuth\Http\Middleware;
+namespace Jybtx\TokenAuth\Http\Middleware;
 
-use JwtAuth;
+use TokenAuth;
 use Illuminate\Http\Request;
-use Jybtx\JwtAuth\TokenValidator;
+use Jybtx\TokenAuth\TokenValidator;
 
 abstract class BaseMiddleware
 {

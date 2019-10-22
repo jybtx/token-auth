@@ -1,10 +1,10 @@
 <?php
 
-namespace Jybtx\JwtAuth\Provider;
+namespace Jybtx\TokenAuth\Provider;
 
 use Illuminate\Support\ServiceProvider;
-use Jybtx\JwtAuth\Console\JWTSecretCommand;
-use Jybtx\JwtAuth\JwtAuthToken;
+use Jybtx\TokenAuth\Console\TokenSecretCommand;
+use Jybtx\TokenAuth\JwtAuthToken;
 
 class JwtAuthServiceProvider extends ServiceProvider
 {
@@ -24,7 +24,7 @@ class JwtAuthServiceProvider extends ServiceProvider
     private function configurePaths()
     {
         $this->publishes([
-            __DIR__."/../config/jwt-auth.php" => config_path('jwt-auth.php'),
+            __DIR__."/../config/token-auth.php" => config_path('token-auth.php'),
         ]);
     }
     /**
@@ -33,7 +33,7 @@ class JwtAuthServiceProvider extends ServiceProvider
     private function mergeConfig()
     {
         $this->mergeConfigFrom(
-            __DIR__.'/../config/jwt-auth.php', 'jwt-auth'
+            __DIR__.'/../config/token-auth.php', 'token-auth'
         );
     }
     /**
@@ -45,7 +45,7 @@ class JwtAuthServiceProvider extends ServiceProvider
      */
     private function getRegisterSingleton()
     {
-        $this->app->singleton('JwtAuth', function () {
+        $this->app->singleton('TokenAuth', function () {
             return new JwtAuthToken();
         });
     }
@@ -59,7 +59,7 @@ class JwtAuthServiceProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->commands([
-                JWTSecretCommand::class,
+                TokenSecretCommand::class,
             ]);
         }
     }

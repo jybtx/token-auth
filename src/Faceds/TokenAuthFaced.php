@@ -1,10 +1,10 @@
 <?php
 
-namespace Jybtx\JwtAuth\Facades;
+namespace Jybtx\TokenAuth\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
-class JWTAuthFaced extends Facade
+class TokenAuthFaced extends Facade
 {
 	
 	/**
@@ -14,6 +14,6 @@ class JWTAuthFaced extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'JwtAuth';
+        return 'TokenAuth';
     }
 }

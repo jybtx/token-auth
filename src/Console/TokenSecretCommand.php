@@ -1,12 +1,12 @@
 <?php
 
-namespace Jybtx\JwtAuth\Console;
+namespace Jybtx\TokenAuth\Console;
 
 use Illuminate\Support\Str;
 use Illuminate\Console\Command;
 use Illuminate\Encryption\Encrypter;
 
-class JWTSecretCommand extends Command
+class TokenSecretCommand extends Command
 {	
 	/**
      * The name and signature of the console command.
@@ -44,7 +44,7 @@ class JWTSecretCommand extends Command
         } else {
             // update existing entry
             file_put_contents($path, str_replace(
-                'JWT_SECRET_KEY='.$this->laravel['config']['jwt-auth.secret'],
+                'JWT_SECRET_KEY='.$this->laravel['config']['token-auth.secret'],
                 'JWT_SECRET_KEY='.$key, file_get_contents($path)
             ));
         }
@@ -70,7 +70,7 @@ class JWTSecretCommand extends Command
      */
     protected function displayKey($key)
     {
-        $this->laravel['config']['jwt-auth.secret'] = $key;
+        $this->laravel['config']['token-auth.secret'] = $key;
         $this->info("token-auth secret set successfully.");
     }
     /**

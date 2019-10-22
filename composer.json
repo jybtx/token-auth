@@ -17,7 +17,7 @@
     },
     "autoload": {        
         "psr-4": {
-            "Jybtx\\JwtAuth\\": "src/"
+            "Jybtx\\TokenAuth\\": "src/"
         },
         "files": [
             "src/Foundation/helpers.php"
@@ -26,10 +26,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Jybtx\\JwtAuth\\Provider\\JwtAuthServiceProvider"
+                "Jybtx\\TokenAuth\\Provider\\TokenAuthServiceProvider"
             ],
             "aliases": {
-                "JwtAuth": "Jybtx\\JwtAuth\\Facades\\JWTAuthFaced"
+                "TokenAuth": "Jybtx\\TokenAuth\\Facades\\TokenAuthFaced"
             }
         }
     }

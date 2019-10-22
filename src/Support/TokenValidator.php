@@ -1,6 +1,6 @@
 <?php
 
-namespace Jybtx\JwtAuth\Support;
+namespace Jybtx\TokenAuth\Support;
 
 use Lcobucci\JWT\Parser;
 use Lcobucci\JWT\Signer\Hmac\Sha512;

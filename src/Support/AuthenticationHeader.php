@@ -1,6 +1,6 @@
 <?php
 
-namespace Jybtx\JwtAuth\Support;
+namespace Jybtx\TokenAuth\Support;
 
 trait AuthenticationHeader
 {

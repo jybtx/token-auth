@@ -1,6 +1,6 @@
 <?php
 
-use Jybtx\JwtAuth\JwtAuthToken;
+use Jybtx\TokenAuth\JwtAuthToken;
 
 if ( !function_exists( 'tokenAuth' ) ) {
 	function tokenAuth( $attributes = NULL )
