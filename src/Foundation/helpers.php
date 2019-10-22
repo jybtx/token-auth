@@ -2,6 +2,9 @@
 
 use Jybtx\TokenAuth\JwtAuthToken;
 
+/**
+ * 获取用户信息
+ */
 if ( !function_exists( 'authUser' ) ) {
 	function authUser( $attributes = NULL )
 	{
@@ -10,6 +13,9 @@ if ( !function_exists( 'authUser' ) ) {
 	}
 }
 
+/**
+ * 获取token过期时间
+ */
 if ( !function_exists('gettl') ) {
 	function gettl()
 	{
@@ -17,6 +23,9 @@ if ( !function_exists('gettl') ) {
 	}
 }
 
+/**
+ * 获取用户token
+ */
 if ( !function_exists('getoken') ) {
 	function getoken()
 	{
