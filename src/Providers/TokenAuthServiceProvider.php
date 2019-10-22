@@ -6,7 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use Jybtx\TokenAuth\Console\TokenSecretCommand;
 use Jybtx\TokenAuth\JwtAuthToken;
 
-class JwtAuthServiceProvider extends ServiceProvider
+class TokenAuthServiceProvider extends ServiceProvider
 {
 	
 	/**
