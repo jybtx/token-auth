@@ -64,7 +64,7 @@ class TestController extends Controller
     	$data = [
     		'name'   => 'joe',
     		'age'    => 18,
-    		'sex'    => 'gire',
+    		'sex'    => 'girl',
     		'like'   => 'sport'
     	];
     	$token = TokenAuth::getCreateAccessToken($data);
