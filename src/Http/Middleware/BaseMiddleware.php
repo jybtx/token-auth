@@ -12,7 +12,7 @@ abstract class BaseMiddleware
 {
 	use TokenValidator;
 
-	public function checkForToken(Request $request)
+	public function checkForToken()
 	{
 		if ( !$this->getVerifyToken( getoken() ) ) {
 			throw new UnauthorizedHttpException('token-auth', 'Token not provided');
@@ -26,7 +26,7 @@ abstract class BaseMiddleware
      *
      * @return \Illuminate\Http\Response|\Illuminate\Http\JsonResponse
      */
-    protected function setAuthenticationHeader($response, $token = null)
+    public function setAuthenticationHeader($response, $token = null)
     {
         $token = $token ?: JwtAuthToken::getRefreshToken();
         $response->headers->set('Authorization', 'Bearer '.$token);
@@ -36,7 +36,7 @@ abstract class BaseMiddleware
 
     /**
      * Check whether token is in blacklist
-     * 
+     *
      */
     public function checkTokenIsInBlacklist()
     {
