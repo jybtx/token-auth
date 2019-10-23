@@ -39,8 +39,9 @@ class JwtAuthToken
 	 * @date   2019-10-11
 	 * @param  [type]     $token [description]
 	 */
-	public function TokenAddBlacklist($token)
+	public function TokenAddBlacklist($token=null)
 	{
+		$token = $token ?: getoken();
 		return $this->getAddBlacklist($token);
 	}
 	/**
