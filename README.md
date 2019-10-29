@@ -146,8 +146,3 @@ get config ttl time
 ```php
 gettl()
 ```
-
-get users token
-```php
-getoken()
-```
