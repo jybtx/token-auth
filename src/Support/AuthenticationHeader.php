@@ -43,7 +43,7 @@ trait AuthenticationHeader
      */
 	public static function setAuthenticationHeader($response, $token = null)
 	{
-		$token = $token ?: self::verifyRefresh($token);
+		$token = $token ?: self::verifyRefresh( getoken() );
         $response->headers->set('Authorization', 'Bearer '.$token);
 
         return $response;

@@ -23,17 +23,6 @@ class JwtAuthToken
 		return $this->getCreateToken($data);
 	}
 	/**
-	 * 生成refresh_token
-	 * @author jybtx
-	 * @date   2019-10-11
-	 * @param  array      $data [description]
-	 * @return [type]           [description]
-	 */
-	public function getCreateRefreshToken(array $data=[])
-	{
-		return $this->getCreateToken($data);
-	}
-	/**
 	 * token添加进黑名单
 	 * @author jybtx
 	 * @date   2019-10-11
@@ -66,9 +55,9 @@ class JwtAuthToken
 	{
 		if ( is_null($attributes) )
     	{
-    		return $this->getPayload(  str_replace('Bearer ','',request()->header('Authorization') ) , true);
+    		return $this->getPayload( getoken(), true);
     	} else {
-    		return $this->getPayload( str_replace('Bearer ','',request()->header('Authorization') ), true)[$attributes];
+    		return $this->getPayload( getoken(), true)[$attributes];
     	}
 	}
 	/**
