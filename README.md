@@ -29,7 +29,7 @@ In your `config/app.php` add `Jybtx\TokenAuth\Provider\TokenAuthServiceProvider:
     "TokenAuth": Jybtx\TokenAuth\Facades\TokenAuthFace::class,
 ]
 ```
-####Publish the config
+#### Publish the config
 
 Run the following command to publish the package config file:
 
