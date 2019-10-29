@@ -29,7 +29,7 @@
                 "Jybtx\\TokenAuth\\Provider\\TokenAuthServiceProvider"
             ],
             "aliases": {
-                "TokenAuth": "Jybtx\\TokenAuth\\Facades\\TokenAuthFaced"
+                "TokenAuth": "Jybtx\\TokenAuth\\Facades\\TokenAuthFace"
             }
         }
     }
