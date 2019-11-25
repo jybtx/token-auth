@@ -16,14 +16,13 @@ trait TokenValidator
 	 */
 	public static function getVerifyToken($token)
     {
+        // 验证token是否合法
+        $payload = self::getPayload($token);
+        if ( !$payload ) return false;
+
         // 验证签名是否合法
         $legal = self::verifySign($token);
-
         if ( $legal != TRUE ) return false;
-
-        $payload = self::getPayload($token);
-
-        if ( !$payload ) return false;
         
         // 签发时间大于当前服务器时间验证失败
         if (isset($payload['iat']) && $payload['iat'] > time()) return false;
