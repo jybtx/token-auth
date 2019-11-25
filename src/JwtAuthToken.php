@@ -18,7 +18,7 @@ class JwtAuthToken
 	 * @param  array      $data [description]
 	 * @return [type]           [description]
 	 */
-	public function getCreateAccessToken(array $data=[])
+	public function getCreateAccessToken( $data = null )
 	{
 		return $this->getCreateToken($data);
 	}
