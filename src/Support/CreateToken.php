@@ -2,6 +2,9 @@
 
 namespace Jybtx\TokenAuth\Support;
 
+
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Cache;
 use Lcobucci\JWT\Parser;
 use Lcobucci\JWT\Builder;
 use Lcobucci\JWT\Signer\Hmac\Sha512;
@@ -15,7 +18,7 @@ trait CreateToken
 	 * @param  array      $data [description]
 	 * @return [type]           [description]
 	 */
-	public static function getCreateToken($data)
+	public static function getCreateToken($data,$flag)
     {
 		$builder   = new Builder();
 		$signer    = new Sha512();
@@ -40,6 +43,26 @@ trait CreateToken
         $builder->sign($signer, str_replace('base64:','',config('token-auth.secret')) );// 对上面的信息使用sha256算法签名
         $token = $builder->getToken();// 获取生成的token
         $token = (string) $token;
+        if ( !empty($flag) ) {
+            self::SingleSignOn($token,$flag);
+        }
         return $token;
+    }
+    /**
+     * [用户单点登录，后者将前者给挤下线]
+     * @author jybtx
+     * @date   2019-12-06
+     * @param  [type]     $token [description]
+     * @param  [type]     $flag  [description]
+     */
+    public static function SingleSignOn($token,$flag)
+    {
+        if ( Cache::has($flag) )
+        {
+            self::getAddBlacklist( Cache::pull($flag) );
+            Cache::put($flag,$token,Carbon::now()->addMonths());
+        } else {
+            Cache::put($flag,$token,Carbon::now()->addMonths());
+        }
     }
 }

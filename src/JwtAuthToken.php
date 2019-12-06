@@ -14,13 +14,14 @@ class JwtAuthToken
 	/**
 	 * 生成access_token
 	 * @author jybtx
-	 * @date   2019-10-11
-	 * @param  array      $data [description]
+	 * @date   2019-12-06
+	 * @param  [type]     $data [description]
+	 * @param  [type]     $flag [唯一标志]
 	 * @return [type]           [description]
 	 */
-	public function getCreateAccessToken( $data = null )
+	public function getCreateAccessToken( $data = null , $flag = null)
 	{
-		return $this->getCreateToken($data);
+		return $this->getCreateToken($data,$flag);
 	}
 	/**
 	 * token添加进黑名单

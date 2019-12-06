@@ -47,10 +47,6 @@ Create the TestController
 ```php
 <?php
 
-namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Cache;
 use TokenAuth;
 class TestController extends Controller
 {
@@ -67,7 +63,8 @@ class TestController extends Controller
     		'sex'    => 'girl',
     		'like'   => 'sport'
     	];
-    	$token = TokenAuth::getCreateAccessToken($data);
+    	$flag = 'user-name'; // 用户的唯一标识
+    	$token = TokenAuth::getCreateAccessToken($data,$flag);
     	return $this->respondWithToken($token);
     }
     protected function respondWithToken($token)

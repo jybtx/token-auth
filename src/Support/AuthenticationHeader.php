@@ -14,13 +14,12 @@ trait AuthenticationHeader
 	 */
 	public static function verifyRefresh($token)
     {
+        $payload = TokenValidator::getPayload($token);
+        if ( !$payload ) return false;
 
         // 验证签名是否合法
         $legal = TokenValidator::verifySign($token);        
         if ( !$legal ) return false;
-
-        $payload = TokenValidator::getPayload($token);
-        if ( !$payload ) return false;
 
         // 签发时间大于当前服务器时间验证失败
         if (isset($payload['iat']) && $payload['iat'] > time()) return false;
