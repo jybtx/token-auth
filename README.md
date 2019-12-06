@@ -64,7 +64,7 @@ class TestController extends Controller
     		'like'   => 'sport'
     	];
     	$flag = 'user-name'; // 用户的唯一标识
-    	$token = TokenAuth::getCreateAccessToken($data,$flag);
+    	$token = TokenAuth::getCreateAccessToken( $data, $flag = null );
     	return $this->respondWithToken($token);
     }
     protected function respondWithToken($token)
