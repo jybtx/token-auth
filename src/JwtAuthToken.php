@@ -69,7 +69,7 @@ class JwtAuthToken
 	 */
 	public function getRefreshToken()
 	{
-		$token = trim(str_replace('Bearer','',request()->header('Authorization')));
+		$token = trim( str_replace('null','',str_replace('Bearer ','',request()->header('Authorization'))) );
 		if ( !empty($token) )
 		{
 			// 验证token是否有效

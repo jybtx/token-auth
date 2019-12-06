@@ -42,6 +42,6 @@ if ( !function_exists('getoken') ) {
 	 */
 	function getoken()
 	{
-        return trim( str_replace('Bearer','',request()->header('Authorization')) );
+        return trim( str_replace('null','',str_replace('Bearer','',request()->header('Authorization'))) );
 	}
 }
