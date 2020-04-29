@@ -6,11 +6,12 @@ use Illuminate\Http\Request;
 use Jybtx\TokenAuth\JwtAuthToken;
 use Illuminate\Support\Facades\Cache;
 use Jybtx\TokenAuth\Support\TokenValidator;
+use Jybtx\TokenAuth\Support\AuthenticationHeader;
 use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 
 abstract class BaseMiddleware
 {
-	use TokenValidator;
+	use TokenValidator,AuthenticationHeader;
     /**
      * [Check the token value of the user's web page]
      * @author jybtx
@@ -45,12 +46,9 @@ abstract class BaseMiddleware
      *
      * @return \Illuminate\Http\Response|\Illuminate\Http\JsonResponse
      */
-    public function setAuthenticationHeader($response, $token = null)
+    public function setAuthenticationHeaders($response, $token = null)
     {
-        $token = $token ?: JwtAuthToken::getRefreshToken();
-        $response->headers->set('Authorization', 'Bearer '.$token);
-
-        return $response;
+        return $this->setAuthenticationHeader($response, $token);
     }
 
     /**
