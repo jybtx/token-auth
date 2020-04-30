@@ -137,7 +137,7 @@ abstract class BaseMiddleware
      *
      * @return \Illuminate\Http\Response|\Illuminate\Http\JsonResponse
      */
-    public function setAuthenticationHeader($response, $token = null)
+    public function setAuthenticationHeaders($response, $token = null)
     {
         $token = $token ?: JwtAuthToken::getRefreshToken();
         $response->headers->set('Authorization', 'Bearer '.$token);
@@ -181,3 +181,7 @@ get config ttl time
 ```php
 gettl()
 ```
+
+## License
+
+The MIT License (MIT)
