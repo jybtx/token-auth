@@ -26,6 +26,16 @@ abstract class BaseMiddleware
 		}
 	}
     /**
+     * [checkTokenRefreshTimeForRestApi description]
+     * @author jybtx
+     * @date   2020-05-06
+     * @return [type]     [description]
+     */
+    public function checkTokenRefreshTimeForRestApi()
+    {
+        return $this->verifyRefresh( getoken() );
+    }
+    /**
      * [Check token value of user REST API]
      * @author jybtx
      * @date   2019-12-16
@@ -33,10 +43,7 @@ abstract class BaseMiddleware
      */
     public function checkTokenForRestApi()
     {
-        if ( !$this->getVerifyToken( getoken() ) ) 
-        {
-            return false;
-        }
+        return $this->getVerifyToken( getoken() );
     }
 	/**
      * Set the authentication header.

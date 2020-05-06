@@ -14,11 +14,11 @@ trait AuthenticationHeader
 	 */
 	public static function verifyRefresh($token)
     {
-        $payload = TokenValidator::getPayload($token);
+        $payload = self::getPayload($token);
         if ( !$payload ) return false;
 
         // 验证签名是否合法
-        $legal = TokenValidator::verifySign($token);        
+        $legal = self::verifySign($token);
         if ( !$legal ) return false;
 
         // 签发时间大于当前服务器时间验证失败
@@ -42,7 +42,24 @@ trait AuthenticationHeader
      */
 	public static function setAuthenticationHeader($response, $token = null)
 	{
-        $token = $token ?: self::verifyRefresh( getoken() );
+        if ( $token )
+        {
+            if ( self::verifyRefresh( $token ) ) {
+                $user_data =  self::getPayload($token, true);// 获取原token中的数据;
+                self::getAddBlacklist($token);
+                $token = self::getCreateToken($user_data);
+            } else {
+                return FALSE;
+            }
+        } else {
+            if ( self::verifyRefresh( getoken() ) ) {
+                $user_data = self::getPayload(getoken(), true);// 获取原token中的数据;
+                self::getAddBlacklist(getoken());
+                $token = self::getCreateToken($user_data);
+            } else {
+                return FALSE;
+            }
+        }
         $response->headers->set('Authorization', 'Bearer '.$token);
         return $response;
 	}
