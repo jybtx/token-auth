@@ -80,9 +80,6 @@ abstract class BaseMiddleware
      */
     public function checkTokenIsInBlacklistForApi()
     {
-        if ( Cache::has( getoken() ) )
-        {
-            return false;
-        }
+        return Cache::has( getoken() );
     }
 }
