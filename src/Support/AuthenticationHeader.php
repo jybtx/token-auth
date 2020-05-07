@@ -54,7 +54,7 @@ trait AuthenticationHeader
         } else {
             if ( self::verifyRefresh( getoken() ) ) {
                 $user_data = self::getPayload(getoken(), true);// 获取原token中的数据;
-                self::getAddBlacklist(getoken());
+                self::getAddBlacklist( (string)getoken() );
                 $token = self::getCreateToken($user_data);
             } else {
                 return FALSE;

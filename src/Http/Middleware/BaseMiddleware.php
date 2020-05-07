@@ -5,13 +5,16 @@ namespace Jybtx\TokenAuth\Http\Middleware;
 use Illuminate\Http\Request;
 use Jybtx\TokenAuth\JwtAuthToken;
 use Illuminate\Support\Facades\Cache;
+use Jybtx\TokenAuth\Support\CreateToken;
 use Jybtx\TokenAuth\Support\TokenValidator;
+use Jybtx\TokenAuth\Support\TokenBlackList;
 use Jybtx\TokenAuth\Support\AuthenticationHeader;
 use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 
 abstract class BaseMiddleware
 {
-	use TokenValidator,AuthenticationHeader;
+	use TokenValidator,AuthenticationHeader
+        ,TokenBlackList,CreateToken;
     /**
      * [Check the token value of the user's web page]
      * @author jybtx

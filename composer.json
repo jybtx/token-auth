@@ -1,6 +1,6 @@
 {
     "name": "jybtx/token-auth",
-    "description": "A simple JSON Web Token validation",
+    "description": "A simple JSON Web Token validation for laravel",
     "type": "library",
     "license": "MIT",
     "keywords": ["jwt","auth","token"],
