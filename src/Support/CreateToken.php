@@ -3,7 +3,7 @@
 namespace Jybtx\TokenAuth\Support;
 
 
-use Illuminate\Support\Carbon;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Cache;
 use Lcobucci\JWT\Parser;
 use Lcobucci\JWT\Builder;
@@ -60,9 +60,9 @@ trait CreateToken
         if ( Cache::has($flag) )
         {
             self::getAddBlacklist( Cache::pull($flag) );
-            Cache::put($flag,$token,Carbon::now()->addMonths());
+            Cache::put($flag,$token,Carbon::now()->addMonth());
         } else {
-            Cache::put($flag,$token,Carbon::now()->addMonths());
+            Cache::put($flag,$token,Carbon::now()->addMonth());
         }
     }
 }
