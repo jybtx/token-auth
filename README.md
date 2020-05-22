@@ -174,10 +174,50 @@ abstract class BaseMiddleware
     }
 }
 ```
+```php
+<?php
+
+use Jybtx\TokenAuth\Http\Middleware\BaseMiddleware;
+
+class xxxxMiddleware extends BaseMiddleware
+{
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure  $next
+     * @return mixed
+     */
+    public function handle($request, Closure $next)
+    {
+        /**
+         * 验证token是否在黑名单中
+         */
+        if ( $this->checkTokenIsInBlacklistForApi() ) return response()->json(['status'=>100,'message'=>"token 无效请重新登录!"]);
+        /**
+         * 检查token是否有效
+         * token在有效期内重新更新token值
+         * 设置响应头
+         */
+        if ( !$this->checkTokenForRestApi() ) {
+            if ( $this->checkTokenRefreshTimeForRestApi() ) {
+                return $this->setAuthenticationHeaders($next($request));
+            } else {
+                return response()->json(['status'=>100,'message'=>"token 无效请重新登录！"]);
+            }
+        }
+        return $next($request);
+    }
+}
+```
 ### helps function
 get user all information
 ```php
 authUser()
+```
+get users token
+```php
+getoken()
 ```
 
 get config ttl time
