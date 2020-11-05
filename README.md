@@ -26,7 +26,7 @@ In your `config/app.php` add `Jybtx\TokenAuth\Provider\TokenAuthServiceProvider:
 ],
 'aliases'  => [
     ...
-    "TokenAuth": Jybtx\TokenAuth\Facades\TokenAuthFace::class,
+    "TokenAuth" => Jybtx\TokenAuth\Facades\TokenAuthFace::class,
 ]
 ```
 #### Publish the config
