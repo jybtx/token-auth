@@ -22,7 +22,7 @@ In your `config/app.php` add `Jybtx\TokenAuth\Provider\TokenAuthServiceProvider:
 ```php
 'providers' => [
     ...
-    Jybtx\TokenAuth\Provider\TokenAuthServiceProvider::class,
+    Jybtx\TokenAuth\Providers\TokenAuthServiceProvider::class,
 ],
 'aliases'  => [
     ...
