@@ -4,7 +4,7 @@ namespace Jybtx\TokenAuth\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
-class TokenAuthFace extends Facade
+class TokenAuthFaced extends Facade
 {
 	
 	/**

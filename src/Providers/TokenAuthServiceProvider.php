@@ -1,10 +1,10 @@
 <?php
 
-namespace Jybtx\TokenAuth\Provider;
+namespace Jybtx\TokenAuth\Providers;
 
+use Jybtx\TokenAuth\JwtAuthToken;
 use Illuminate\Support\ServiceProvider;
 use Jybtx\TokenAuth\Console\TokenSecretCommand;
-use Jybtx\TokenAuth\JwtAuthToken;
 
 class TokenAuthServiceProvider extends ServiceProvider
 {

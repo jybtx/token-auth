@@ -26,10 +26,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Jybtx\\TokenAuth\\Provider\\TokenAuthServiceProvider"
+                "Jybtx\\TokenAuth\\Providers\\TokenAuthServiceProvider"
             ],
             "aliases": {
-                "TokenAuth": "Jybtx\\TokenAuth\\Facades\\TokenAuthFace"
+                "TokenAuth": "Jybtx\\TokenAuth\\Facades\\TokenAuthFaced"
             }
         }
     }
