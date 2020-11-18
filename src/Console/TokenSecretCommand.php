@@ -5,6 +5,7 @@ namespace Jybtx\TokenAuth\Console;
 use Illuminate\Support\Str;
 use Illuminate\Console\Command;
 use Illuminate\Encryption\Encrypter;
+use Illuminate\Support\Facades\Cache;
 
 class TokenSecretCommand extends Command
 {	
@@ -48,6 +49,7 @@ class TokenSecretCommand extends Command
                 'JWT_SECRET_KEY='.$key, file_get_contents($path)
             ));
         }
+        $this->cacheSecretKey($key);
         $this->displayKey($key);
     }
     /**
@@ -68,7 +70,7 @@ class TokenSecretCommand extends Command
      *
      * @return void
      */
-    protected function displayKey($key)
+    protected function displayKey(string $key)
     {
         $this->laravel['config']['token-auth.secret'] = $key;
         $this->info("token-auth secret set successfully.");
@@ -88,5 +90,18 @@ class TokenSecretCommand extends Command
             return $this->laravel->basePath().DIRECTORY_SEPARATOR.'.env';
         }
         return $this->laravel->basePath('.env');
+    }
+    /**
+     * [永久存储生成的key]
+     * @Author jybtx
+     * @date   2020-11-18
+     * @param  string     $attributes [description]
+     * @return [type]                 [description]
+     */
+    protected function cacheSecretKey(string $attributes)
+    {
+        if ( $this->laravel['config']['token-auth.cache_open'] ) {
+            Cache::forever($this->laravel['config']['token-auth.cache_key'],$attributes);
+        }
     }
 }

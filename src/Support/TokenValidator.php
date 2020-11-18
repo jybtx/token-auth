@@ -46,7 +46,7 @@ trait TokenValidator
         $signer = new Sha512();
         $parse  = new Parser();
         $parse  = $parse->parse($token);
-        $result = $parse->verify($signer, str_replace('base64:','',config('token-auth.secret')) );// 验证成功返回true 失败false
+        $result = $parse->verify($signer, self::getCacheSecretKey() );// 验证成功返回true 失败false
         return $result;
     }
     /**

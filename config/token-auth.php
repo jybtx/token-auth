@@ -47,4 +47,29 @@ return [
     */
     'refresh_ttl' => env('JWT_REFRESH_TTL', 21600),
 
+    /**
+     |
+     |--------------------------------------------------------------------------
+     |   Do you want to turn on persistent caching
+     |--------------------------------------------------------------------------
+     |  If you want to cache your keys in the cache, you can turn on this method. 
+     |  True means you need to cache your generated keys in your memory, 
+     |  and false means you don't need to cache your keys in memory.
+     |  This value only true or false.
+     |
+     */
+    'cache_open'   => false,
+
+    /**
+    |--------------------------------------------------------------------------
+    |   Key value of persistent cache
+    |--------------------------------------------------------------------------
+    |
+    | This key is the key value in the cache. This key can be obtained from 
+    | the cache when you need it. 
+    | The key needs to be enabled to determine whether cache is required.
+    */
+
+    'cache_key'  => 'JWT_CACHE_KEY',
+
 ];

@@ -4,10 +4,10 @@ namespace Jybtx\TokenAuth\Support;
 
 
 use Carbon\Carbon;
-use Illuminate\Support\Facades\Cache;
 use Lcobucci\JWT\Parser;
 use Lcobucci\JWT\Builder;
 use Lcobucci\JWT\Signer\Hmac\Sha512;
+use Illuminate\Support\Facades\Cache;
 
 trait CreateToken
 {
@@ -18,7 +18,7 @@ trait CreateToken
 	 * @param  array      $data [description]
 	 * @return [type]           [description]
 	 */
-	public static function getCreateToken($data,$flag = null)
+	public static function getCreateToken(array $data,$flag = null)
     {
 		$builder   = new Builder();
 		$signer    = new Sha512();
@@ -40,7 +40,7 @@ trait CreateToken
         if ( !empty($data) ) {
             $builder->set('data', $data);
         }
-        $builder->sign($signer, str_replace('base64:','',config('token-auth.secret')) );// 对上面的信息使用sha256算法签名
+        $builder->sign($signer, self::getCacheSecretKey() );// 对上面的信息使用sha256算法签名
         $token = $builder->getToken();// 获取生成的token
         $token = (string) $token;
         if ( !empty($flag) ) {
@@ -55,7 +55,7 @@ trait CreateToken
      * @param  [type]     $token [description]
      * @param  [type]     $flag  [description]
      */
-    public static function SingleSignOn($token,$flag)
+    public static function SingleSignOn(string $token,string $flag)
     {
         if ( Cache::has($flag) )
         {
@@ -64,5 +64,15 @@ trait CreateToken
         } else {
             Cache::put($flag,$token,Carbon::now()->addMonth());
         }
+    }
+    /**
+     * [获取缓存内的密钥]
+     * @Author jybtx
+     * @date   2020-11-18
+     * @return [type]     [description]
+     */
+    public static function getCacheSecretKey(){
+        $key = Cache::get( config('token-auth.cache_key') )?:config('token-auth.secret');
+        return str_replace('base64:','', $key );
     }
 }

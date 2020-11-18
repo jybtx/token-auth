@@ -24,7 +24,7 @@ class TokenAuthServiceProvider extends ServiceProvider
     private function configurePaths()
     {
         $this->publishes([
-            __DIR__."/../config/token-auth.php" => config_path('token-auth.php'),
+            __DIR__."/../../config/token-auth.php" => config_path('token-auth.php'),
         ]);
     }
     /**
@@ -33,7 +33,7 @@ class TokenAuthServiceProvider extends ServiceProvider
     private function mergeConfig()
     {
         $this->mergeConfigFrom(
-            __DIR__.'/../config/token-auth.php', 'token-auth'
+            __DIR__.'/../../config/token-auth.php', 'token-auth'
         );
     }
     /**
