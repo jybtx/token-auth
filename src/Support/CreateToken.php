@@ -72,7 +72,7 @@ trait CreateToken
      * @return [type]     [description]
      */
     public static function getCacheSecretKey(){
-        $key = Cache::get( config('token-auth.cache_key') )?:config('token-auth.secret');
+        $key = Cache::get( config('token-auth.cache_key') )??config('token-auth.secret');
         return str_replace('base64:','', $key );
     }
 }
