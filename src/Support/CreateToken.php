@@ -18,7 +18,7 @@ trait CreateToken
 	 * @param  array      $data [description]
 	 * @return [type]           [description]
 	 */
-	public static function getCreateToken(array $data,$flag = null)
+	public static function getCreateToken($data,$flag = null)
     {
 		$builder   = new Builder();
 		$signer    = new Sha512();
