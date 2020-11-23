@@ -31,7 +31,7 @@ class JwtAuthToken
 	 */
 	public function TokenAddBlacklist($token=null)
 	{
-		$token = $token ?: getoken();
+		$token = $token??getoken();
 		return $this->getAddBlacklist($token);
 	}
 	/**
