@@ -52,7 +52,7 @@ class JwtAuthToken
 	 * @param  [type]     $attributes [description]
 	 * @return [type]                 [description]
 	 */
-	public function getAuthUserInfomation( $attributes = null )
+	public function getAuthUserInformation( $attributes = null )
 	{
 		if ( is_null($attributes) )
     	{
@@ -60,6 +60,19 @@ class JwtAuthToken
     	} else {
     		return $this->getPayload( getoken(), true)[$attributes];
     	}
+	}
+
+    /**
+     * [用户自己传递token值]
+     * @Author jybtx
+     * @date   2021-02-04
+     * @param  [type]     $attributes [description]
+     * @return [type]                 [description]
+     */
+    public function getUserSendToken( $attributes = null )
+    {
+        if ( is_null($attributes) ) return false;
+        return $this->getPayload( $attributes );
 	}
 	/**
 	 * 获取刷新token信息

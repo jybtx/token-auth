@@ -18,6 +18,22 @@ if ( !function_exists( 'authUser' ) ) {
 	}
 }
 
+if ( !function_exists('get_token_data') )
+{
+    /**
+     * [返回用户传递的token值]
+     * @Author jybtx
+     * @date   2021-02-04
+     * @param  [type]     $attributes [description]
+     * @return [type]                 [description]
+     */
+    function get_token_data( $attributes )
+    {
+        $tokenAuth = new JwtAuthToken;
+        return $tokenAuth->getUserSendToken( $attributes );
+    }
+}
+
 
 if ( !function_exists('gettl') ) {
 	/**

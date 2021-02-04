@@ -224,6 +224,10 @@ get config ttl time
 ```php
 gettl()
 ```
+The user obtains the token himself
+```php
+get_token_data( $string )
+```
 
 ## License
 
