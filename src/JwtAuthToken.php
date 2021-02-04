@@ -72,7 +72,8 @@ class JwtAuthToken
     public function getUserSendToken( $attributes = null )
     {
         if ( is_null($attributes) ) return false;
-        return $this->getPayload( $attributes );
+        if ( !$this->getVerifyToken($attributes) ) return false;
+        return $this->getPayload( $attributes, true );
 	}
 	/**
 	 * 获取刷新token信息
