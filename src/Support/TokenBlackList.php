@@ -15,7 +15,7 @@ trait TokenBlackList
     public static function getAddBlacklist($token)
     {
         $expiresAt = Carbon::now()->addMonth();
-        Cache::put($token,$token,$expiresAt); // 缓存一个月
+        Cache::put(md5($token),$token,$expiresAt); // 缓存一个月
         return true;
     }
 }

@@ -53,6 +53,6 @@ abstract class BaseMiddleware
      */
     public function checkTokenIsInBlacklistForApi()
     {
-        return Cache::has( getoken() );
+        return Cache::has( md5( getoken() ) );
     }
 }
