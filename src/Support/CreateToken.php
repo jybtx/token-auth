@@ -20,13 +20,13 @@ trait CreateToken
 	 */
 	public static function getCreateToken($data,$flag = null)
     {
-		$builder   = new Builder();
-		$signer    = new Sha512();
-		$curr_time = time();
-		$token_id  = md5(uniqid('JWT').$curr_time);	
+        $builder   = new Builder();
+        $signer    = new Sha512();
+        $curr_time = time();
+        $token_id  = md5(uniqid('JWT').$curr_time);
 
-		$exp       = bcadd($curr_time, bcmul( 60, config('token-auth.ttl') ) );
-		$ref_exp   = bcadd($curr_time, bcmul(60, config('token-auth.refresh_ttl') ) );
+        $exp       = bcadd($curr_time, bcmul( 60, config('token-auth.ttl') ) );
+        $ref_exp   = bcadd($curr_time, bcmul(60, config('token-auth.refresh_ttl') ) );
         // 官方字段可选用
         $builder->setIssuer('admin');// 设置iss发行人
         $builder->setAudience('user');// 设置aud接收人

@@ -21,7 +21,7 @@ class JwtAuthToken
 	 */
 	public function getCreateAccessToken( $data = null , $flag = null)
 	{
-		return $this->getCreateToken($data,$flag);
+	    return self::getCreateToken($data,$flag);
 	}
 	/**
 	 * token添加进黑名单
@@ -32,7 +32,7 @@ class JwtAuthToken
 	public function TokenAddBlacklist($token=null)
 	{
 		$token = $token??getoken();
-		return $this->getAddBlacklist($token);
+		return self::getAddBlacklist($token);
 	}
 	/**
 	 * 设置头信息
@@ -43,7 +43,7 @@ class JwtAuthToken
 	 */
 	public function setAuthenticationHeader($response, $token = null)
 	{
-		return $this->setAuthenticationHeader($response,$token);
+	    return self::getSetAuthenticationHeader($response,$token);
 	}
 	/**
 	 * 获取用户信息
@@ -54,11 +54,13 @@ class JwtAuthToken
 	 */
 	public function getAuthUserInformation( $attributes = null )
 	{
+		if ( is_null($attributes) || !$this->getVerifyToken($attributes) ) return false;
+		
 		if ( is_null($attributes) )
     	{
-    		return $this->getPayload( getoken(), true);
+    		return self::getPayload( getoken(), true);
     	} else {
-    		return $this->getPayload( getoken(), true)[$attributes];
+    		return self::getPayload( getoken(), true)[$attributes];
     	}
 	}
 
@@ -71,9 +73,9 @@ class JwtAuthToken
      */
     public function getUserSendToken( $attributes = null )
     {
-        if ( is_null($attributes) ) return false;
-        if ( !$this->getVerifyToken($attributes) ) return false;
-        return $this->getPayload( $attributes, true );
+        if ( is_null($attributes) || !$this->getVerifyToken($attributes) ) return false;
+
+        return self::getPayload( $attributes, true );
 	}
 	/**
 	 * 获取刷新token信息
@@ -94,7 +96,7 @@ class JwtAuthToken
 	            if ( !$refresh ) {
 	            	throw new UnauthorizedHttpException('token-auth', 'Token has expired');
 	            }
-	            $user_data = $this->getPayload($token, true);// 获取原token中的数据
+	            $user_data = self::getPayload($token, true);// 获取原token中的数据
 	            self::TokenAddBlacklist($token);	            
 	            return self::getCreateAccessToken($user_data);// 重新生成token
 			}

@@ -1,6 +1,7 @@
 <?php
 
-namespace Jybtx\TokenAuth\Facades;
+namespace Jybtx\TokenAuth\Faceds;
+
 
 use Illuminate\Support\Facades\Facade;
 

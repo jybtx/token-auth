@@ -40,7 +40,7 @@ trait AuthenticationHeader
      * @param  [type]     $response [description]
      * @param  [type]     $token    [description]
      */
-	public static function setAuthenticationHeader($response, $token = null)
+	public static function getSetAuthenticationHeader($response, $token = null)
 	{
         if ( $token )
         {

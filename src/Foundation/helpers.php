@@ -14,7 +14,7 @@ if ( !function_exists( 'authUser' ) ) {
 	function authUser( $attributes = NULL )
 	{
 		$tokenAuth = new JwtAuthToken;
-		return $tokenAuth->getAuthUserInfomation($attributes);
+		return $tokenAuth->getAuthUserInformation($attributes);
 	}
 }
 
