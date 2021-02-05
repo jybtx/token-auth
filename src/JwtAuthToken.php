@@ -54,7 +54,7 @@ class JwtAuthToken
 	 */
 	public function getAuthUserInformation( $attributes = null )
 	{
-		if ( is_null($attributes) || !$this->getVerifyToken($attributes) ) return false;
+		if ( !$this->getVerifyToken(getoken()) ) return false;
 		
 		if ( is_null($attributes) )
     	{

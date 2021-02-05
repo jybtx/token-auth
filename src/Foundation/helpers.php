@@ -27,7 +27,7 @@ if ( !function_exists('get_token_data') )
      * @param  [type]     $attributes [description]
      * @return [type]                 [description]
      */
-    function get_token_data( $attributes )
+    function get_token_data( $attributes  = NULL )
     {
         $tokenAuth = new JwtAuthToken;
         return $tokenAuth->getUserSendToken( $attributes );
