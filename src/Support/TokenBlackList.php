@@ -2,8 +2,9 @@
 
 namespace Jybtx\TokenAuth\Support;
 
+use Redis;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\Cache;
+
 
 trait TokenBlackList
 {
@@ -15,7 +16,7 @@ trait TokenBlackList
     public static function getAddBlacklist($token)
     {
         $expiresAt = Carbon::now()->addMonth();
-        Cache::put(md5($token),$token,$expiresAt); // 缓存一个月
+        Redis::set(md5($token),$token,$expiresAt); // 缓存一个月
         return true;
     }
 }

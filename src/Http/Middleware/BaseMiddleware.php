@@ -2,8 +2,8 @@
 
 namespace Jybtx\TokenAuth\Http\Middleware;
 
+use Redis;
 use Jybtx\TokenAuth\JwtAuthToken;
-use Illuminate\Support\Facades\Cache;
 use Jybtx\TokenAuth\Support\CreateToken;
 use Jybtx\TokenAuth\Support\TokenValidator;
 use Jybtx\TokenAuth\Support\TokenBlackList;
@@ -53,6 +53,6 @@ abstract class BaseMiddleware
      */
     public function checkTokenIsInBlacklistForApi()
     {
-        return Cache::has( md5( getoken() ) );
+        return Redis::exists( md5( getoken() ) );
     }
 }

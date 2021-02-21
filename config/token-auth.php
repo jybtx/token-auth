@@ -58,7 +58,7 @@ return [
      |  This value only true or false.
      |
      */
-    'cache_open'   => false,
+    'cache_open'   => true,
 
     /*
     |--------------------------------------------------------------------------
@@ -70,6 +70,6 @@ return [
     | The key needs to be enabled to determine whether cache is required.
     */
 
-    'cache_key'  => env('JWT_CACHE_KEY','token_auth_key'),
+    'cache_key'  => env('JWT_CACHE_KEY',''),
 
 ];

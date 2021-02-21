@@ -2,10 +2,10 @@
 
 namespace Jybtx\TokenAuth\Console;
 
+use Redis;
 use Illuminate\Support\Str;
 use Illuminate\Console\Command;
 use Illuminate\Encryption\Encrypter;
-use Illuminate\Support\Facades\Cache;
 
 class TokenSecretCommand extends Command
 {	
@@ -101,7 +101,7 @@ class TokenSecretCommand extends Command
     protected function cacheSecretKey(string $attributes)
     {
         if ( $this->laravel['config']['token-auth.cache_open'] ) {
-            Cache::forever($this->laravel['config']['token-auth.cache_key'],$attributes);
+            Redis::set($this->laravel['config']['token-auth.cache_key'],$attributes);
         }
     }
 }
