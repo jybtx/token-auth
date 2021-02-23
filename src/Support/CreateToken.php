@@ -2,10 +2,10 @@
 
 namespace Jybtx\TokenAuth\Support;
 
-use Redis;
 use Carbon\Carbon;
 use Lcobucci\JWT\Builder;
 use Lcobucci\JWT\Signer\Hmac\Sha512;
+use Illuminate\Support\Facades\Redis;
 
 trait CreateToken
 {

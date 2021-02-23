@@ -29,7 +29,7 @@ return [
     | Notice: If you set this to null you should remove 'exp' element from 'required_claims' list.
     |
     */
-    'ttl' => env('JWT_ACCESS_TTL', 60*2),
+    'ttl' => env('JWT_ACCESS_TTL', 60 * 2 ),
 
     /*
     |--------------------------------------------------------------------------
@@ -45,7 +45,7 @@ return [
     | systems in place to revoke the token if necessary.
     |
     */
-    'refresh_ttl' => env('JWT_REFRESH_TTL', 60*60*15),
+    'refresh_ttl' => env('JWT_REFRESH_TTL', 60 * 60 * 15 ),
 
     /*
      |

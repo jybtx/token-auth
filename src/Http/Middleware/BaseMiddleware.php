@@ -2,8 +2,8 @@
 
 namespace Jybtx\TokenAuth\Http\Middleware;
 
-use Redis;
 use Jybtx\TokenAuth\JwtAuthToken;
+use Illuminate\Support\Facades\Redis;
 use Jybtx\TokenAuth\Support\CreateToken;
 use Jybtx\TokenAuth\Support\TokenValidator;
 use Jybtx\TokenAuth\Support\TokenBlackList;

@@ -2,9 +2,8 @@
 
 namespace Jybtx\TokenAuth\Support;
 
-use Redis;
 use Carbon\Carbon;
-
+use Illuminate\Support\Facades\Redis;
 
 trait TokenBlackList
 {

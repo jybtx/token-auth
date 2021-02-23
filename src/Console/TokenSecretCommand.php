@@ -2,10 +2,10 @@
 
 namespace Jybtx\TokenAuth\Console;
 
-use Redis;
 use Illuminate\Support\Str;
 use Illuminate\Console\Command;
 use Illuminate\Encryption\Encrypter;
+use Illuminate\Support\Facades\Redis;
 
 class TokenSecretCommand extends Command
 {	
