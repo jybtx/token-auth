@@ -1,5 +1,5 @@
 # token-auth
-一个token认证的扩展包
+一个token认证的扩展包，使用本扩展请确认已经安装好了Redis扩展，如果不需要缓存Secret key请在配置文件中关闭 `'cache_open'   => false`,这样就不会将生成的Secret key存储到你的redis中了。^-^
 
 ## Installation
 
