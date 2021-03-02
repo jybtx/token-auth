@@ -52,8 +52,8 @@ return [
      |--------------------------------------------------------------------------
      |   Do you want to turn on persistent caching
      |--------------------------------------------------------------------------
-     |  If you want to cache your keys in the cache, you can turn on this method. 
-     |  True means you need to cache your generated keys in your memory, 
+     |  If you want to cache your keys in the cache, you can turn on this method.
+     |  True means you need to cache your generated keys in your memory,
      |  and false means you don't need to cache your keys in memory.
      |  This value only true or false.
      |
@@ -65,11 +65,11 @@ return [
     |   Key value of persistent cache
     |--------------------------------------------------------------------------
     |
-    | This key is the key value in the cache. This key can be obtained from 
-    | the cache when you need it. 
+    | This key is the key value in the cache. This key can be obtained from
+    | the cache when you need it.
     | The key needs to be enabled to determine whether cache is required.
     */
 
-    'cache_key'  => env('JWT_CACHE_KEY',''),
+    'cache_key'  => env('JWT_CACHE_KEY','jwt_cache_key'),
 
 ];
