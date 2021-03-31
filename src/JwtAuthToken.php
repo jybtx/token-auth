@@ -54,8 +54,8 @@ class JwtAuthToken
 	 */
 	public function getAuthUserInformation( $attributes = null )
 	{
-		if ( !$this->getVerifyToken(getoken()) ) return false;
-		
+//		if ( !$this->getVerifyToken(getoken()) ) return false;
+
 		if ( is_null($attributes) )
     	{
     		return self::getPayload( getoken(), true);
@@ -73,7 +73,7 @@ class JwtAuthToken
      */
     public function getUserSendToken( $attributes = null )
     {
-        if ( is_null($attributes) || !$this->getVerifyToken($attributes) ) return false;
+//        if ( is_null($attributes) || !$this->getVerifyToken($attributes) ) return false;
 
         return self::getPayload( $attributes, true );
 	}
@@ -97,7 +97,7 @@ class JwtAuthToken
 	            	throw new UnauthorizedHttpException('token-auth', 'Token has expired');
 	            }
 	            $user_data = self::getPayload($token, true);// 获取原token中的数据
-	            self::TokenAddBlacklist($token);	            
+	            self::TokenAddBlacklist($token);
 	            return self::getCreateAccessToken($user_data);// 重新生成token
 			}
 		}
