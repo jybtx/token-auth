@@ -53,7 +53,7 @@ trait CreateToken
      * @param  [type]     $token [description]
      * @param  [type]     $flag  [description]
      */
-    public static function SingleSignOn(string $token,string $flag)
+    public static function SingleSignOn($token,$flag)
     {
         if ( Redis::exists($flag) )
         {

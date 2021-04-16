@@ -20,7 +20,7 @@ return [
     |--------------------------------------------------------------------------
     |
     | Specify the length of time (in minutes) that the token will be valid for.
-    | Defaults to 2 hour.
+    | Defaults to 2 day.
     |
     | You can also set this to null, to yield a never expiring token.
     | Some people may want this behaviour for e.g. a mobile app.
@@ -29,7 +29,7 @@ return [
     | Notice: If you set this to null you should remove 'exp' element from 'required_claims' list.
     |
     */
-    'ttl' => env('JWT_ACCESS_TTL', 60 * 2 ),
+    'ttl' => env('JWT_ACCESS_TTL', 60 * 24 * 2 ),
 
     /*
     |--------------------------------------------------------------------------
@@ -45,7 +45,7 @@ return [
     | systems in place to revoke the token if necessary.
     |
     */
-    'refresh_ttl' => env('JWT_REFRESH_TTL', 60 * 60 * 15 ),
+    'refresh_ttl' => env('JWT_REFRESH_TTL', 60 * 24 * 15 ),
 
     /*
      |
@@ -58,7 +58,7 @@ return [
      |  This value only true or false.
      |
      */
-    'cache_open'   => true,
+    'cache_open'   => false,
 
     /*
     |--------------------------------------------------------------------------
