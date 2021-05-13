@@ -54,13 +54,11 @@ class JwtAuthToken
 	 */
 	public function getAuthUserInformation( $attributes = null )
 	{
-//		if ( !$this->getVerifyToken(getoken()) ) return false;
-
 		if ( is_null($attributes) )
     	{
     		return self::getPayload( getoken(), true);
     	} else {
-    		return self::getPayload( getoken(), true)[$attributes];
+    		return self::getPayload( getoken(), true,$attributes);
     	}
 	}
 
@@ -73,8 +71,6 @@ class JwtAuthToken
      */
     public function getUserSendToken( $attributes = null )
     {
-//        if ( is_null($attributes) || !$this->getVerifyToken($attributes) ) return false;
-
         return self::getPayload( $attributes, true );
 	}
 	/**
