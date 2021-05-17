@@ -76,6 +76,6 @@ trait TokenValidator
         }else{
             $data = (array) $payload;
         }
-        return $data[$attributes];
+        return $attributes ? $data[$attributes] : $data;
     }
 }
