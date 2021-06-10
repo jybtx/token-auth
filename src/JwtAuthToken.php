@@ -58,7 +58,7 @@ class JwtAuthToken
     	{
     		return self::getPayload( getoken(), true);
     	} else {
-    		return self::getPayload( getoken(), true,$attributes);
+    		return self::getPayload( getoken(), true, $attributes);
     	}
 	}
 
