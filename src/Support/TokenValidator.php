@@ -55,7 +55,7 @@ trait TokenValidator
      * @param string $only_data    只返回自定义字段(默认只返回所有字段)
      * @return bool|array
      */
-    public static function getPayload($token, $only_data=false,$attributes=null)
+    public static function getPayload( $token, $only_data = false, $attributes = null )
     {
         if ( !$token )  return false;
 
