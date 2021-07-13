@@ -55,13 +55,9 @@ trait CreateToken
      */
     public static function SingleSignOn($token,$flag)
     {
-        if ( Redis::exists($flag) )
-        {
-            self::getAddBlacklist( Redis::spop($flag) );
-            Redis::set($flag,$token,Carbon::now()->addMonth());
-        } else {
-            Redis::set($flag,$token,Carbon::now()->addMonth());
-        }
+        $result = Redis::get($flag);
+        if ( $result ) self::getAddBlacklist( $result );
+        Redis::set($flag,$token,Carbon::now()->addMonth());
     }
     /**
      * [获取缓存内的密钥]
