@@ -101,7 +101,7 @@ class TokenSecretCommand extends Command
     protected function cacheSecretKey(string $attributes)
     {
         if ( $this->laravel['config']['token-auth.cache_open'] ) {
-            Cache::put($this->laravel['config']['token-auth.cache_key'],$attributes);
+            Cache::forever($this->laravel['config']['token-auth.cache_key'],$attributes);
         }
     }
 }
