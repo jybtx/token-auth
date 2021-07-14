@@ -5,7 +5,7 @@ namespace Jybtx\TokenAuth\Support;
 use Carbon\Carbon;
 use Lcobucci\JWT\Builder;
 use Lcobucci\JWT\Signer\Hmac\Sha512;
-use Illuminate\Support\Facades\Redis;
+use Illuminate\Support\Facades\Cache;
 
 trait CreateToken
 {
@@ -55,9 +55,9 @@ trait CreateToken
      */
     public static function SingleSignOn($token,$flag)
     {
-        $result = Redis::get($flag);
+        $result = Cache::pull( $flag );
         if ( $result ) self::getAddBlacklist( $result );
-        Redis::set($flag,$token,Carbon::now()->addMonth());
+        Cache::put($flag,$token,Carbon::now()->addMonth());
     }
     /**
      * [获取缓存内的密钥]
@@ -66,7 +66,7 @@ trait CreateToken
      * @return [type]     [description]
      */
     public static function getCacheSecretKey(){
-        $key = Redis::get( config('token-auth.cache_key') )??config('token-auth.secret');
+        $key = Cache::get( config('token-auth.cache_key') )??config('token-auth.secret');
         return str_replace('base64:','', $key );
     }
 }
