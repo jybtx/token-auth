@@ -72,4 +72,15 @@ return [
 
     'cache_key'  => env('JWT_CACHE_KEY','jwt_cache_key'),
 
+    /*
+    |--------------------------------------------------------------------------
+    |   Cache prefix
+    |--------------------------------------------------------------------------
+    |
+    | The distinction between multiple applications when single sign-on
+    | is sharing the same server is the token prefix of that application
+    |
+    */
+    'cache_prefix' => env('CACHE_PREFIX','prefix'),
+
 ];
