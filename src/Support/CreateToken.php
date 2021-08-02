@@ -55,10 +55,9 @@ trait CreateToken
      */
     public static function SingleSignOn($token,$flag)
     {
-        $prefix = config('token-auth.cache_prefix') . '_' . $flag;
-        $result = Cache::pull( $prefix );
+        $result = Cache::pull( $flag );
         if ( $result ) self::getAddBlacklist( $result );
-        Cache::put($prefix,$token,Carbon::now()->addMonth());
+        Cache::put($flag,$token,Carbon::now()->addMonth());
     }
     /**
      * [获取缓存内的密钥]
